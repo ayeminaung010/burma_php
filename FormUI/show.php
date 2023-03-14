@@ -2,15 +2,22 @@
     try{
         $pdo = new PDO("mysql:dbname=school;host=localhost",'root','kali');
         $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-        $statement = $pdo->query('select * from students');
-        $students =  $statement->fetchAll(PDO::FETCH_CLASS);
-        
+
+        $statement = $pdo->prepare("select * from students where id = :id");
+        $statement->bindParam(':id',$_GET['id']);
+
+        if($statement->execute()){
+            $student =  $statement->fetch(PDO::FETCH_OBJ);
+        }else{
+            echo 'something wrong';
+        }
     }catch(PDOException $e){
         var_dump($e);
     }catch(Exception $e){
         echo $e->getMessage();
     }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -26,11 +33,13 @@
     <div class="container mt-4">
         <div class="row justify-content-center">
             <div class="col-8">
-                <?php foreach($students as $student): ?>
+                <?php if($student): ?>
                     <?php 
                         echo "<p>{$student->id} - {$student-> name} - {$student->age} - {$student->dob}</p>";
                     ?>
-                <?php endforeach; ?>
+                <?php else: ?>
+                    <?php echo 'Student Not Found'; ?>
+                <?php endif; ?>
             </div>
         </div>
     </div>
