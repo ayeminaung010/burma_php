@@ -1,15 +1,9 @@
 <?php
-    try{
-        $pdo = new PDO("mysql:dbname=school;host=localhost",'root','kali');
-        $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-        $statement = $pdo->query('select * from students');
-        $students =  $statement->fetchAll(PDO::FETCH_CLASS);
-        
-    }catch(PDOException $e){
-        var_dump($e);
-    }catch(Exception $e){
-        echo $e->getMessage();
-    }
+
+    require_once "db.php";
+
+    $db = new DB();
+    $students = $db->index();
 ?>
 
 <!DOCTYPE html>
@@ -26,11 +20,18 @@
     <div class="container mt-4">
         <div class="row justify-content-center">
             <div class="col-8">
-                <?php foreach($students as $student): ?>
-                    <?php 
-                        echo "<p>{$student->id} - {$student-> name} - {$student->age} - {$student->dob}</p>";
-                    ?>
-                <?php endforeach; ?>
+                <a href="create.php" class='btn btn-primary my-5'>Create New Students</a>
+                <h5>Student Lists</h5>
+                <?php if($students): ?>
+                    <?php foreach($students as $student): ?>
+                        <?php 
+                            echo "<p><a href='show.php?id={$student->id}' class='text-decoration-none'>{$student->id} - {$student-> name} </a></p>";
+                        ?>
+                        
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <p>There is no Students</p>
+                <?php endif; ?>
             </div>
         </div>
     </div>

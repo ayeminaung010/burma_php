@@ -1,21 +1,9 @@
 <?php
-    try{
-        $pdo = new PDO("mysql:dbname=school;host=localhost",'root','kali');
-        $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+    
+    require_once "db.php";
 
-        $statement = $pdo->prepare("select * from students where id = :id");
-        $statement->bindParam(':id',$_GET['id']);
-
-        if($statement->execute()){
-            $student =  $statement->fetch(PDO::FETCH_OBJ);
-        }else{
-            echo 'something wrong';
-        }
-    }catch(PDOException $e){
-        var_dump($e);
-    }catch(Exception $e){
-        echo $e->getMessage();
-    }
+    $db = new DB();
+    $student = $db->show($_GET['id']);
 ?>
 
 
@@ -34,7 +22,7 @@
         <div class="row justify-content-center">
             <div class="col-8">
                 <?php if($student): ?>
-                    <h1>Create New Student</h1>
+                    <h1>Edit Student</h1>
                 <form action="update.php" method="POST">
                     <input type="hidden" name="id" value="<?php echo $student->id; ?>">
                     <div class="form-group my-2">

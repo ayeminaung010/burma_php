@@ -1,21 +1,10 @@
 <?php
-    try{
-        $pdo = new PDO("mysql:dbname=school;host=localhost",'root','kali');
-        $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
-        $statement = $pdo->prepare("select * from students where id = :id");
-        $statement->bindParam(':id',$_GET['id']);
+    require_once "db.php";
 
-        if($statement->execute()){
-            $student =  $statement->fetch(PDO::FETCH_OBJ);
-        }else{
-            echo 'something wrong';
-        }
-    }catch(PDOException $e){
-        var_dump($e);
-    }catch(Exception $e){
-        echo $e->getMessage();
-    }
+    $db = new DB();
+    $student = $db->show($_GET['id']);
+    
 ?>
 
 
@@ -33,10 +22,18 @@
     <div class="container mt-4">
         <div class="row justify-content-center">
             <div class="col-8">
+                <h3> Student Detail
+                </h5>
                 <?php if($student): ?>
-                    <?php 
-                        echo "<p>{$student->id} - {$student-> name} - {$student->age} - {$student->dob}</p>";
-                    ?>
+                    <p>ID - <?php echo $student->id; ?></p>
+                    <p>Name - <?php echo $student->name; ?></p>
+                    <p>Email - <?php echo $student->email; ?></p>
+                    <p>Gender - <?php echo $student->gender; ?></p>
+                    <p>Date of Birth - <?php echo $student->dob; ?></p>
+                    <p>Age - <?php echo $student->age; ?></p>
+                    <a href="index.php" class='btn btn-primary'>Home</a>
+                    <a href="edit.php?id=<?php echo $student->id; ?>" class='btn btn-secondary'>Edit</a>
+                    <a href="destroy.php?id=<?php echo $student->id; ?>" class='btn btn-danger'>Delete</a>
                 <?php else: ?>
                     <?php echo 'Student Not Found'; ?>
                 <?php endif; ?>

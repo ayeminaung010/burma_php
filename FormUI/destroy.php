@@ -2,6 +2,5 @@
     require_once "db.php";
 
     $db = new DB();
-    $db->update();
-
+    $db->destroy();
 ?>
