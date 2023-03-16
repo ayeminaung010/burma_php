@@ -1,0 +1,19 @@
+{
+    "name": "ayeminaung/student_ui",
+    "description": "san kyi dr pr",
+    "autoload": {
+        "psr-4": {
+            "Ayeminaung\\StudentUi\\": "src/",
+            "App\\": "App/",
+            "Utili\\": "Utili/"
+        },
+        "files": ["helper.php"]
+    },
+    "authors": [
+        {
+            "name": "ayeminaung010",
+            "email": "ayeminaung.mf@gmail.com"
+        }
+    ],
+    "require": {}
+}

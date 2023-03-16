@@ -1,4 +1,6 @@
 <?php
+namespace Utili;
+use PDO;
 
 class DB
 {

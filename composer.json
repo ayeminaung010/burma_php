@@ -1,0 +1,18 @@
+{
+    "name": "ayeminaung/student_management_system",
+    "autoload": {
+        "psr-4": {
+            "Ayeminaung\\StudentManagementSystem\\": "src/"
+        },
+        "files": ["db.php","helper.php"]
+    },
+    "authors": [
+        {
+            "name": "ayeminaung010",
+            "email": "ayeminaung.mf@gmail.com"
+        }
+    ],
+    "require": {}
+
+
+}

@@ -1,9 +1,16 @@
 <?php
 
-    require_once "db.php";
+    // require_once "db.php";
+    // require_once "helper.php";
+    require_once "vendor/autoload.php";
 
+    // $test = new test();
+    // die(var_dump($test->text()));
+    use Utili\DB;
+    // use App\DB;
     $db = new DB();
     $students = $db->index();
+    // dd($students);
 ?>
 
 <!DOCTYPE html>
