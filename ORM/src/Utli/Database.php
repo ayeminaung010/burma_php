@@ -36,7 +36,7 @@
 
         public function destroy($id)
         {
-            $result = Student::xwhere('id','=',$id)->delete();
+            $result = Student::where('id','=',$id)->delete();
             if($result){
                 header('location: index.php');
             }
@@ -44,7 +44,7 @@
 
         public function store($data)
         {
-            $id = Student::xinsertGetId([
+            $id = Student::insertGetId([
                 'name' => $data['name'],
                 'email' => $data['email'],
                 'gender' => $data['gender'],
@@ -62,13 +62,13 @@
 
         public function show($id)
         {
-            $student = Student::xwhere('id','=',$id)->first();
+            $student = Student::where('id','=',$id)->first();
             return $student;
         }
 
         public function update($data)
         {
-            $id = Student::xwhere('id',$data['id'])->update([
+            $id = Student::where('id',$data['id'])->update([
                 'name' => $data['name'],
                 'email' => $data['email'],
                 'gender' => $data['gender'],
