@@ -7,5 +7,8 @@
         require_once( __DIR__. "/views/" . $file_name);
     }
 
-
+    function notFound()
+    {
+        echo "404 not found";
+    }
 ?>

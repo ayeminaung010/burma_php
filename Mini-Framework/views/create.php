@@ -14,7 +14,7 @@
             <div class="col-8">
 
                 <h1>Create New Student</h1>
-                <form action="store.php" method="POST">
+                <form action="/store" method="POST">
                     <div class="form-group my-2">
                         <label for="name">Name</label>
                         <input type="text" name='name' class='form-control' placeholder='Enter Name'>

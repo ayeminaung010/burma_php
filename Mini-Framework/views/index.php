@@ -14,10 +14,11 @@
             <div class="col-8">
                 <a href="/create" class='btn btn-primary my-5'>Create New Students</a>
                 <h5>Student Lists</h5>
-                <?php if($students): ?>
+                
+                <?php if(count($students)): ?>
                     <?php foreach($students as $student): ?>
                         <?php 
-                            echo "<p><a href='</show?id=' class='text-decoration-none'>{$student->id} - {$student-> name} </a></p>";
+                            echo "<p><a href='show?id={$student->id}' class='text-decoration-none'>{$student->id} - {$student-> name} </a></p>";
                         ?>
                     <?php endforeach; ?>
                 <?php else: ?>
