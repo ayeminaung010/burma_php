@@ -18,7 +18,7 @@
                 <?php if(count($students)): ?>
                     <?php foreach($students as $student): ?>
                         <?php 
-                            echo "<p><a href='show?id={$student->id}' class='text-decoration-none'>{$student->id} - {$student-> name} </a></p>";
+                            echo "<p><a href='show/{$student->id}' class='text-decoration-none'>{$student->id} - {$student-> name} </a></p>";
                         ?>
                     <?php endforeach; ?>
                 <?php else: ?>

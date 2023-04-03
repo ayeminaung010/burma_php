@@ -1,4 +1,6 @@
 <?php
+
+use Symfony\Component\HttpFoundation\Response;
     use Symfony\Component\Templating\Loader\FilesystemLoader;
     use Symfony\Component\Templating\PhpEngine;
     use Symfony\Component\Templating\Helper\SlotsHelper;
