@@ -22,8 +22,8 @@
                     <p>Date of Birth - <?php echo $student->dob; ?></p>
                     <p>Age - <?php echo $student->age; ?></p>
                     <a href="index" class='btn btn-primary'>Home</a>
-                    <a href="edit?id=<?php echo $student->id; ?>" class='btn btn-secondary'>Edit</a>
-                    <a href="destroy?id=<?php echo $student->id; ?>" class='btn btn-danger'>Delete</a>
+                    <a href="edit/<?php echo $student->id; ?>" class='btn btn-secondary'>Edit</a>
+                    <a href="destroy/<?php echo $student->id; ?>" class='btn btn-danger'>Delete</a>
                 <?php else: ?>
                     <?php echo 'Student Not Found'; ?>
                 <?php endif; ?>

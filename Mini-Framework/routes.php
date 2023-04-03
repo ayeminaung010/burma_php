@@ -1,31 +1,41 @@
 <?php
     use App\Controllers\StudentController;
+    use Symfony\Component\Routing\RouteCollection;
+    use Symfony\Component\Routing\Route;
 
-    $routes = [
-        "/" => [StudentController::class,"index"],
-        "/index" => [StudentController::class,"index"],
-        "/create" => [StudentController::class,"create"],
-        "/show" => [StudentController::class,"show"],
-        "/store" => [StudentController::class,"store"],
-        "/edit" => [StudentController::class,"edit"],
-        "/update" => [StudentController::class,"update"],
-        "/destroy" => [StudentController::class,"destroy"],
-    ];
+    $routes = new RouteCollection();
+    $routes->add('index', new Route('/index', [
+        '_controller' => [StudentController::class,"index"]
+        ]
+    ));
 
-    if(array_key_exists("PATH_INFO",$_SERVER)){
-        $route = $_SERVER['PATH_INFO'];
-    }else{
-        $route = "/index";
-    }
+    $routes->add('show', new Route('/show/{id}', [
+        '_controller' => [StudentController::class,"show"]
+        ]
+    ));
 
-    if(array_key_exists($route,$routes)){
-        $controller = $routes[$route][0];
-        $method = $routes[$route][1];
-    }else{
-        return notfound();
-    }
+    $routes->add('create', new Route('/create', [
+        '_controller' => [StudentController::class,"create"]
+        ]
+    ));
 
-    $name = new $controller();
-    $name->$method();
+    $routes->add('store', new Route('/store', [
+        '_controller' => [StudentController::class,"store"]
+        ]
+    ));
 
+    $routes->add('edit', new Route('/edit/{id}', [
+        '_controller' => [StudentController::class,"edit"]
+        ]
+    ));
+
+    $routes->add('update', new Route('/update/{id}', [
+        '_controller' => [StudentController::class,"update"]
+        ]
+    ));
+
+    $routes->add('destroy', new Route('/destroy/{id}', [
+        '_controller' => [StudentController::class,"destroy"]
+        ]
+    ));
 ?>

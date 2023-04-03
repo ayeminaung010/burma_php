@@ -14,7 +14,7 @@
             <div class="col-8">
                 <?php if($student): ?>
                     <h1>Edit Student</h1>
-                <form action="/update" method="POST">
+                <form action="/update/<?php echo $student->id; ?>" method="POST">
                     <input type="hidden" name="id" value="<?php echo $student->id; ?>">
                     <div class="form-group my-2">
                         <label for="name">Name</label>
